@@ -2,7 +2,7 @@ class Game{
     constructor() {
         this.board = [];
         this.players = [];
-        this.turn = 'playerX'
+        this.turn = 'player1'
         }
 
     newPlayer(playerInfo) {
@@ -11,7 +11,7 @@ class Game{
     }
 
     gameDraw() {
-        if(this.board.length > 9) { 
+        if(this.board.length === 9) { 
             this.gameReset();
         }
     }
