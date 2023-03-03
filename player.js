@@ -3,6 +3,7 @@ class Player{
         this.wins = 0;
         this.token = token;
         this.id = id;
+        this.boxes = [];
     }
 
     increaseWins() {

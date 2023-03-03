@@ -99,21 +99,3 @@ function winningCombosP2() {
         currentGame.players[1].increaseWins();
     }
 }
-
-
-
-// winning combos
-
-// ROWS
-// 012
-// 345
-// 678
-
-// COLUMS
-// 036
-// 147
-// 258
-
-// DIAGONALS
-// 048
-// 246
