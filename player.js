@@ -10,6 +10,3 @@ class Player{
         this.wins ++;
     }
 }
-
-
-
