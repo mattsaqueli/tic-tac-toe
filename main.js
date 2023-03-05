@@ -1,63 +1,67 @@
 // -------- GLOBAL -------- //
 
-var playerX = [];
-var playerO = [];
-var currentGame;
+var currentGame = new Game(player1, player2);
+var player1 = new Player(1, '🏂');
+var player2 = new Player(2, '⛷️');
+var move;
 
 // -------- QUERY SELECTORS -------- //
 
-var box0 = document.querySelector('#box0');
-var box1 = document.querySelector('#box1');
-var box2 = document.querySelector('#box2');
-var box3 = document.querySelector('#box3');
-var box4 = document.querySelector('#box4');
-var box5 = document.querySelector('#box5');
-var box6 = document.querySelector('#box6');
-var box7 = document.querySelector('#box7');
-var box8 = document.querySelector('#box8');
+var board = document.querySelector('.board');
+var snowboarderWins = document.querySelector('.snowboarder-wins')
+var skierWins = document.querySelector('.skier-wins')
+var playerTurn = document.querySelector('.display-turn')
+var boxes = document.querySelectorAll('.box')
 
 // -------- EVENT LISTENERS -------- //
 
-box0.addEventListener('click');
-box1.addEventListener('click');
-box2.addEventListener('click');
-box3.addEventListener('click');
-box4.addEventListener('click');
-box5.addEventListener('click');
-box6.addEventListener('click');
-box7.addEventListener('click');
-box8.addEventListener('click');
+board.addEventListener('click', function(event) {
+    startGame(event);
+    currentGame.playerMove();
+    currentGame.playerWin();
+    currentGame.gameDraw();
+    playerTurnDisplay();
+    playerWinnerDisplay();
+
+    // currentGame.gameReset();
+  })
 
 // -------- FUNCTIONS -------- //
 
-// function buildNewGame() {
-//     currentGame = new Game();
-// }
+function addToken(event) {
+    move = event.target.id;
+    if (!event.target.classList.contains('not-allowed')) {
+      event.target.innerText = `${currentGame.emoji}`
+      event.target.classList.add('not-allowed')
+    }
+  }
 
-// function buildPlayerX() {
-//     playerX = new Player('Player X');
-//     currentGame.newPlayer(playerX);
-// }
+function startGame(event) {
+    if (event.target.classList.contains('box')) {
+        addToken(event);
+    }
+}
 
-// function buildPlayerO() {
-//     playerO = new Player('PlayerO');
-//     currentGame.newPlayer(playerO)
-// }
+function playerTurnDisplay() {
+    playerTurn.innerText = `${currentGame.emoji}'s turn!`
+}
 
+function playerWinnerDisplay() {
+    if (currentGame.winner === 'player1') {
+        playerTurn.innerText = `${player1.token} WINNER!`
+    } else if (currentGame.winner === 'player2') {
+        playerTurn.innerText = `${player2.token} WINNER!`
+    } else if (currentGame.winner === 'draw game') {
+        playerTurn.innerText = 'DRAW GAME!'
+    }
+    if (currentGame.winner === 'player1' || currentGame.winner === 'player2' || currentGame.winner === 'draw game') {
+        gameRestart();
+    }
+}
 
-
-//winning combos
-
-// ROWS
-// 012
-// 345
-// 678
-
-// COLUMS
-// 036
-// 147
-// 258
-
-// DIAGONALS
-// 048
-// 246
+function gameRestart() {
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].innerText = '';
+    }
+    board.classList.remove('not-allowed');
+}
