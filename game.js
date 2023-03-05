@@ -5,7 +5,8 @@ class Game{
         this.winner = null;
         this.board = 0;
         this.turn = 'player1';
-        this.emoji = '🏂'
+        this.playerRestart = 'player1';
+        this.emoji = '🏂';
         this.winningBoxes = [
             [0, 1, 2],
             [3, 4, 5],
@@ -61,7 +62,7 @@ class Game{
 
     gameDraw() {
         if(this.winner === null && this.board === 9) { 
-            this.winner = 'Draw Game';
+            this.winner = 'draw game';
             this.gameReset();
         }
     }
@@ -72,12 +73,12 @@ class Game{
         player1.boxes = [];
         player2.boxes = [];
 
-    //     if (this.winner === 'player1' || 'Draw Game') {
-    //         this.turn = player2.id;
-    //         this.emoji = player2.token;
-    //     } else if (this.winner === 'player2' || 'Draw Game') {
-    //         this.turn = player1.id;
-    //         this.emoji = player1.token;
-    //     }
+        if (this.playerRestart === 'player1') {
+            this.turn = player2.id;
+            this.emoji = player2.token;
+        } else if (this.playerRestart === 'player2') {
+            this.turn = player1.id;
+            this.emoji = player1.token;
+        }
     }
 }
