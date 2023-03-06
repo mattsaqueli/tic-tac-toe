@@ -58,7 +58,9 @@ function playerWinnerDisplay() {
         playerTurn.innerText = 'DRAW GAME!'
        
     }
-    if (currentGame.winner === 'player1' || currentGame.winner === 'player2' || currentGame.winner === 'draw game') {
+    if (currentGame.winner === 'player1' ||
+        currentGame.winner === 'player2' ||
+        currentGame.winner === 'draw game') {
         disableBoard();
     }
 }
