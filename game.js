@@ -5,7 +5,6 @@ class Game{
         this.winner = null;
         this.board = 0;
         this.turn = 'player1';
-        this.playerRestart = 'player1';
         this.emoji = '🏂';
         this.winningBoxes = [
             [0, 1, 2],
@@ -22,11 +21,6 @@ class Game{
    
     playerMove() {
         var makeMove = parseInt(move);
-        for (var i = 0; i < this.board; i++) {
-            if (player1.boxes[i] === makeMove || player2.boxes[i] === makeMove) {
-                return;
-            }
-        }
         if (this.turn === 'player1') {
             player1.boxes.push(makeMove);
             this.switchPlayersTurn();
@@ -50,10 +44,14 @@ class Game{
 
     playerWin() {
         for (var i = 0; i < this.winningBoxes.length; i++) {
-            if (player1.boxes.includes(this.winningBoxes[i][0]) && player1.boxes.includes(this.winningBoxes[i][1]) && player1.boxes.includes(this.winningBoxes[i][2])) {
+            if (player1.boxes.includes(this.winningBoxes[i][0]) 
+            && player1.boxes.includes(this.winningBoxes[i][1]) 
+            && player1.boxes.includes(this.winningBoxes[i][2])) {
                 this.winner = 'player1';
                 player1.increaseWins();
-            } else if (player2.boxes.includes(this.winningBoxes[i][0]) && player2.boxes.includes(this.winningBoxes[i][1]) && player2.boxes.includes(this.winningBoxes[i][2])) {
+            } else if (player2.boxes.includes(this.winningBoxes[i][0]) 
+            && player2.boxes.includes(this.winningBoxes[i][1]) 
+            && player2.boxes.includes(this.winningBoxes[i][2])) {
                 this.winner = 'player2';
                 player2.increaseWins();
             }
@@ -63,7 +61,6 @@ class Game{
     gameDraw() {
         if(this.winner === null && this.board === 9) { 
             this.winner = 'draw game';
-            this.gameReset();
         }
     }
 
@@ -73,12 +70,18 @@ class Game{
         player1.boxes = [];
         player2.boxes = [];
 
-        if (this.playerRestart === 'player1') {
-            this.turn = player2.id;
+        if (this.winner === 'player1') {
+            this.turn = 'player2';
             this.emoji = player2.token;
-        } else if (this.playerRestart === 'player2') {
-            this.turn = player1.id;
+        } else if (this.winner === 'player2') {
+            this.turn = 'player1';
             this.emoji = player1.token;
         }
+    }
+
+    gameRestart() {
+        if (this.winner === 'player1' || 'player2' || null) {
+            this.gameReset();
+        };
     }
 }
