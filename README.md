@@ -25,7 +25,7 @@ In the following page, hit the “View Deployment” button to view the site.
 
 ## Preview of App:
 
-[Preview](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjJiMzJjMWI5ODc3NTViZDQzZTk3ODExYWUwYWRmMWE1NTUyNDdlYSZjdD1n/VpiJDko2X1GnXZ3Irv/giphy.gif)
+![Preview](https://media.giphy.com/media/VpiJDko2X1GnXZ3Irv/giphy.gif)
 
 ## Context:
 
