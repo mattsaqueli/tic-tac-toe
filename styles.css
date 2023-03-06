@@ -1,14 +1,16 @@
-
+* {
+    cursor: default;
+}
 body {
     margin: 0;
     padding: 0;
     cursor: default;
     background-color: aliceblue;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .whole-container {
-    background-color: whitesmoke;
+    background-image: url(./assets/6221972.jpg);
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -17,7 +19,7 @@ body {
 }
 
 .player-container {
-    background-color: #EEE;
+    /* background-color: #ffffff; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -30,6 +32,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 50vw;
     height: 100vh;
@@ -41,19 +44,23 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 0px;
-    width: 500px;
+    width: 60%;
+    height: 10%;
+
 }
 
 .box {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid grey;
+    font-size: 50px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5%;
     cursor: pointer;
 }
 
 .box:hover {
-    background-color: #EEE;
+    background-color: rgb(172, 219, 247);
 }
 
 /* need remove borders from box */
@@ -69,6 +76,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
 }
 
 .display-turn {
@@ -79,5 +87,22 @@ body {
 .not-allowed:active {
     opacity: .5;
     cursor: not-allowed;
+}
+
+.disable {
+    pointer-events: none;
+}
+
+.restart-btn {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: none;
+    font-size: 1.5rem;
+    text-shadow: 5em;
+    cursor: pointer;
+}
+
+.restart-btn:hover {
+    background-color: rgb(172, 219, 247);
 }
 
